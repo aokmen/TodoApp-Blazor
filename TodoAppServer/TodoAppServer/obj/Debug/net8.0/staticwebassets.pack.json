@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\mokme\\source\\repos\\TodoAppServer\\TodoAppServer\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TodoAppServer.bundle.scp.css",
+      "PackagePath": "staticwebassets\\TodoAppServer.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\mokme\\source\\repos\\TodoAppServer\\TodoAppServer\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\mokme\\source\\repos\\TodoAppServer\\TodoAppServer\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\mokme\\source\\repos\\TodoAppServer\\TodoAppServer\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\mokme\\source\\repos\\TodoAppServer\\TodoAppServer\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TodoAppServer.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.TodoAppServer.props",
+      "PackagePath": "build\\TodoAppServer.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.TodoAppServer.props",
+      "PackagePath": "buildMultiTargeting\\TodoAppServer.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.TodoAppServer.props",
+      "PackagePath": "buildTransitive\\TodoAppServer.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

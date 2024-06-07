@@ -1,0 +1,34 @@
+﻿
+
+<input placeholder="Add new todo" @bind="newTodo"/>
+<button @onclick = "AddTodo">Add</button>
+
+<ul>
+    @foreach (var todo in todos)
+    {
+        <li>@todo <button @onclick="() => RemoveTodo(todo)"> Remove </button></li>
+    }
+</ul>
+
+
+@code {
+    // private string newTodo = string.Empty;
+    private string? newTodo;
+
+    private List<string> todos = new List<string>();
+
+ 
+
+    private void AddTodo()
+    {
+        if (!string.IsNullOrWhiteSpace(newTodo))
+        {
+            todos.Add(newTodo);
+            newTodo = string.Empty;
+        }
+    }
+    private void RemoveTodo(string todo)
+    {
+        todos.Remove(todo);
+    }
+}
