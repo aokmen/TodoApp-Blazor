@@ -1,12 +1,16 @@
-@rendermode InteractiveServer﻿
+@rendermode InteractiveServer
 
 <input placeholder="Add new todo" @bind="newTodo"/>
-<button @onclick = "AddTodo">Add</button>
+<button class="btn btn-danger" @onclick = "AddTodo">Add</button>
 
 <ul>
     @foreach (var todo in todos)
     {
-        <li>@todo <button @onclick="() => RemoveTodo(todo)"> Remove </button></li>
+        <li @onclick="() => HandleClickOnTodo(todo)" class="@(counter%2 == 0 ? "todo-item-clicked" : "")">
+            @todo
+
+            <button @onclick="() => RemoveTodo(todo)"> Remove </button>
+        </li>
     }
 </ul>
 
@@ -14,10 +18,10 @@
 @code {
     // private string newTodo = string.Empty;
     private string? newTodo;
-
+    private int counter = 0;
     private List<string> todos = new List<string>();
 
- 
+
 
     private void AddTodo()
     {
@@ -31,4 +35,32 @@
     {
         todos.Remove(todo);
     }
+
+    private void HandleClickOnTodo(string info)
+    {
+
+        Console.WriteLine(info + " tiklandi");
+
+        counter ++;
+
+    }
+
+    private bool IsTodoClicked(string todo)
+    {
+        return todos.Contains(todo);
+    }
 }
+<style>
+    input{
+        background-color: mistyrose;
+    }
+    li{
+        cursor:copy;
+        text-decoration: none;
+    }
+
+    .todo-item-clicked {
+        text-decoration: line-through;
+    }
+
+</style>
