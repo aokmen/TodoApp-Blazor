@@ -6,7 +6,7 @@
 <ul>
     @foreach (var todo in todos)
     {
-        <li @onclick="() => HandleClickOnTodo(todo)" class="@(counter%2 == 0 ? "todo-item-clicked" : "")">
+        <li @onclick="() => HandleClickOnTodo(todo)" class="@(counter%2 == 0 ? "todo-item-clicked" : "")"> 
             @todo
 
             <button @onclick="() => RemoveTodo(todo)"> Remove </button>
