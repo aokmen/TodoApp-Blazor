@@ -6,21 +6,5 @@
 
 @code {
     // private List<string> todos = new List<string>(); 
-    private string? newTodo; 
-   
-    private string newTodo;
-
-    public Todo(string newTodo)
-    {
-        this.newTodo = newTodo;
-    }
-
-    private void AddTodo()
-    {
-        if (!string.IsNullOrWhiteSpace(newTodo))
-        {
-            todos.Add(newTodo);
-            newTodo = string.Empty;
-        }
-    }
+  
 }
