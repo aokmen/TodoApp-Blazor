@@ -1,0 +1,59 @@
+﻿@page "/randnumber"
+@rendermode InteractiveServer
+
+<h3>Random Number Generator</h3>
+
+<div >
+    <label for="startNumber">Starting Number:</label>
+    <input id="startNumber"  type="number" @bind="startNumber" />
+</div>
+
+<div >
+    <label for="endNumber">Number of Ends:</label>
+    <input id="endNumber"  type="number" @bind="endNumber" />
+</div>
+
+<p>Random Number: <span class="random-box">@randomNumber</span></p>
+<button class="btn btn-primary"  @onclick="GenerateRandomNumber">Generate New Random Number</button>
+@code {
+    private int startNumber, endNumber, randomNumber;
+
+    [Inject] IJSRuntime? JS { get; set; }
+
+    private void GenerateRandomNumber()
+    {
+        if (startNumber > 0 && endNumber < 100000)
+        {
+            randomNumber = new Random().Next(startNumber, endNumber + 1);
+        }
+        else
+        {
+            if (JS != null)
+            {
+                 JS.InvokeVoidAsync("alert", "Starting number must be greater than 0 and end number must be less than 100,000.");
+            }
+        }
+
+    }
+    
+}
+<style>
+    input{
+        height:40px;
+        margin:5px;
+        padding-left:10px;
+    }
+    p{
+        margin-top:10px;
+    }
+
+    .random-box {
+        font-size:100px;
+        border:2px solid black;
+        padding:20px;
+        width:350px;
+        display:block;
+        border-radius:10px;
+        background-color:aliceblue;
+    }
+</style>
