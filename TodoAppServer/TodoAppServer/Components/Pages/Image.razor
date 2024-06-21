@@ -1,0 +1,56 @@
+﻿@page "/image"
+@inject HttpClient HttpClient
+@rendermode InteractiveServer
+<div style="text-align:center; margin-bottom:30px; display:flex; justify-content:center; flex-direction:column">
+    <h3>IMAGES</h3>
+    <button class="btn-info" style="color:white; padding:20px; margin-bottom:30px" @onclick="Change">Get Random Image</button>
+    <div class="images">
+        <img src="https://picsum.photos/200/300?random=@randomNumber" />
+        <img src="https://picsum.photos/200/300?random=@randomNumber+1" />
+        <img src="https://picsum.photos/200/300?random=@randomNumber+2" />
+        <img src="https://picsum.photos/200/300?random=@randomNumber+3" />
+    </div>
+</div>
+
+
+
+@* @if (dataApi != null)
+{
+    <h3>Title: @item.title</h3>
+    <p>Completed: @item.completed</p>
+  
+} *@
+
+@code {
+    private int randomNumber;
+
+    private void Change()
+    {
+        randomNumber = new Random().Next(1,100);
+
+    }
+    // public MyClass? dataApi;
+
+    // private async Task FetchData()
+    // {
+
+    //     dataApi = await HttpClient.GetFromJsonAsync<MyClass>("https://picsum.photos/200/300?random=1");
+    //     Console.WriteLine(dataApi);
+    // }
+
+    // public class MyClass
+    // {
+    //     public int userId { get; set; }
+    //     public int id { get; set; }
+    //     public string? url { get; set; }
+    //     public bool completed { get; set; }
+    // }
+}
+<style>
+    .images img{
+     
+        border-radius:20px;
+        margin:10px;
+        box-shadow:0 0 30px rgba(0, 0, 0, 0.5);
+    }
+</style>

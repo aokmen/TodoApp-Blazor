@@ -1,56 +1,52 @@
+﻿@rendermode InteractiveServer
 
-@rendermode InteractiveServer
-@inject NavigationManager Navigation
-
-<PageTitle>To-Do List</PageTitle>
-
-<h3>Todo Lists</h3>
-<input @bind="newTodo.Text" placeholder="Add a new task" />
-<button class="btn btn-info" @onclick="AddTodo">Add </button>
+<input placeholder="Add new todo" @bind="newTodo"/>
+<button class="btn btn-danger" @onclick = "AddTodo">Add</button>
 
 <ul>
     @foreach (var todo in todos)
     {
-        <li @onclick="()=>ToggleCheck(todo)" class="todo-list btn-info ">
-            <span style="@(todo.Checked ? "text-decoration: line-through;" : "")">@todo.Text </span>  <button @onclick="()=>RemoveTodo(todo)">Remove</button>
+        <li @onclick="() => HandleClickOnTodo(todo)" class="@(counter%2 == 0 ? "todo-item-clicked" : "")">
+            @todo
 
+            <button @onclick="() => RemoveTodo(todo)"> Remove </button>
         </li>
     }
 </ul>
-@code {
-    private TodoItem newTodo = new TodoItem();
-    private List<TodoItem> todos = new List<TodoItem>();
 
-private void AddTodo()
+
+@code {
+    // private string newTodo = string.Empty;
+    private string? newTodo;
+    private int counter = 0;
+    private List<string> todos = new List<string>();
+
+
+
+    private void AddTodo()
     {
-        if (!string.IsNullOrWhiteSpace(newTodo.Text))
+        if (!string.IsNullOrWhiteSpace(newTodo))
         {
             todos.Add(newTodo);
-            newTodo = new TodoItem(); 
+            newTodo = string.Empty;
         }
     }
-    private void RemoveTodo(TodoItem todo)
+    private void RemoveTodo(string todo)
     {
         todos.Remove(todo);
     }
 
-
-    private void ToggleCheck(TodoItem todo)
+    private void HandleClickOnTodo(string info)
     {
-        todo.Checked = !todo.Checked;
+
+        Console.WriteLine(info + " tiklandi");
+
+        counter ++;
+
     }
 
-    public class TodoItem
+    private bool IsTodoClicked(string todo)
     {
-        public string Text { get; set; } = string.Empty;
-        public bool Checked { get; set; } = false;
+        return todos.Contains(todo);
     }
 }
-
-<style>
-    .todo-list {
-        margin-top: 10px;
-        cursor: default;
-    }
-
-</style>

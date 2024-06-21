@@ -1,7 +1,69 @@
 ﻿@page "/todo"
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
 
+<PageTitle>To-Do List</PageTitle>
+<div class="todo-list-main">
+    <h3>Todo Lists</h3>
+    <input @bind="newTodo.Text" placeholder="Add a new task" />
+    <button class="btn btn-info" @onclick="AddTodo">Add </button>
+
+    <ul>
+        @foreach (var todo in todos)
+        {
+            <li @onclick="()=>ToggleCheck(todo)" class="todo-list btn-info ">
+                <span style="@(todo.Checked ? "text-decoration: line-through;" : "")">@todo.Text </span>  <button @onclick="()=>RemoveTodo(todo)">Remove</button>
+
+            </li>
+        }
+    </ul>
+</div>
 
 @code {
-  
-  
+    private TodoItem newTodo = new TodoItem();
+    private List<TodoItem> todos = new List<TodoItem>();
+
+private void AddTodo()
+    {
+        if (!string.IsNullOrWhiteSpace(newTodo.Text))
+        {
+            todos.Add(newTodo);
+            newTodo = new TodoItem(); 
+        }
+    }
+    private void RemoveTodo(TodoItem todo)
+    {
+        todos.Remove(todo);
+    }
+
+
+    private void ToggleCheck(TodoItem todo)
+    {
+        todo.Checked = !todo.Checked;
+    }
+
+    public class TodoItem
+    {
+        public string Text { get; set; } = string.Empty;
+        public bool Checked { get; set; } = false;
+    }
 }
+
+<style>
+    .todo-list-main{
+       
+        margin:0 auto;
+        margin-top:100px;
+        padding:20px;
+        width:500px;
+        height:500px;
+        text-align:center;
+        border-radius:30px;
+        box-shadow:0 0 10px black;
+    }
+    .todo-list {
+        margin-top: 10px;
+        cursor: default;
+    }
+
+</style>
